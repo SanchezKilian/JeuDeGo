@@ -7,6 +7,7 @@ public class Main {
 		Plateau P = new Plateau();
 		ArrayList<Chaines> allCh = new ArrayList<Chaines>();
 		ArrayList<Chaines> AConcate = new ArrayList<Chaines>();
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		Chaines finalle;
 		Piece Piec;
@@ -78,7 +79,7 @@ public class Main {
 				NJoueur =0;
 			}
 			for (Chaines C : allCh) {
-				System.out.println("\n chaine : size : " + P.calcFree(C)  );
+				System.out.println("\n chaine : nombre libertée : " + P.calcFree(C)  );
 				C.afficherChaine();
 			}
 			P.afficherP();
