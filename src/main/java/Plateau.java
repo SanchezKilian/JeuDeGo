@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Plateau {
 	
-	private Piece[][] plateau = new Piece[20][20];
+	public Piece[][] plateau = new Piece[20][20];
 	private Piece newP;
 	
-	private int Pb = 0;
-	private int Pn = 0;
+	public int Pb = 0;
+	public int Pn = 0;
 	
 	public Plateau() {
 		for (int a = 0; a < 20 ; a++) {
@@ -93,6 +93,7 @@ public class Plateau {
 		for (Piece P : CaseCheck) {
 			System.out.println("place libre : " + P.GetPos().getX() +"__" + P.GetPos().getY()  + " clr " + P.getClr()); 
 			
+			
 		}
 		
 		return CaseCheck.size();		
@@ -116,7 +117,7 @@ public class Plateau {
 	
 	public int Calcul(int X, int Y) {
 		int dessus =-15, dessous = -20,droite = -25 , gauche = -30;
-		if(X != 1) {
+		if(X > 1 ) {
 			if (plateau[X-1][Y].getClr() != -1) {
 				return plateau[X-1][Y].getClr();
 			}else {
@@ -168,8 +169,115 @@ public class Plateau {
 		return -10;
 		
 	}
-		
 	
+	public void score() {
+		/*
+		for(int a = 1;a <20 ;a++) {
+			for (Piece piece : plateau[a]) {
+				Arround(piece);
+			}
+		}
+		*/
+		Arround(plateau[3][2],0);
+	}
+		
+	private int Arround(Piece P, int arrive) {   // arrive : 4 gauche 8 haut 6 droite 2 bas 
+		int X = P.GetPos().getX();
+		int Y = P.GetPos().getY();
+		int up = -10, down = -11, droite = -12, gauche = -13;
+		if(P.getClr() == -1) {
+			
+			if (X > 1 && arrive != 2 ) {
+				switch(plateau[X-1][Y].getClr()) {
+				case 0 :
+					up = 0;
+					break;
+				case 1 :
+					up =1;
+					break;
+				default :
+					if(X-1 == 2) {
+						up = Arround(plateau[X-1][Y], 8);
+					}
+					
+					break;
+				}
+			}
+			
+			if (X <19 && arrive != 8) {
+				switch(plateau[X+1][Y].getClr()) {
+				case 0 :
+					down = 0;
+					break;
+				case 1 :
+					down =1;
+					break;
+				default :
+					down = Arround(plateau[X+1][Y],2);
+					break;
+				}
+			}
+			
+			if (Y >1) {
+				switch(plateau[X][Y-1].getClr()) {
+				case 0 :
+					gauche = 0;
+					break;
+				case 1 :
+					gauche =1;
+					break;
+				default :
+					//gauche =Arround(plateau[X][Y-1]);
+					break;
+				}
+			}
+			
+			if (Y <19) {
+				switch(plateau[X][Y+1].getClr()) {
+				case 0 :
+					droite = 0;
+					break;
+				case 1 :
+					droite =1;
+					break;
+				default :
+					//droite = Arround(plateau[X][Y+1]);
+					break;
+				}
+			}
+			System.out.println("X=" + X +" Y=" +Y + "\n haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite );
+			if(up == down && gauche == droite && up == droite) {
+				if(up == 0) {
+					System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
+					plateau[X][Y].setAppartenance(up);
+					System.out.println("un point pour l'équipe " + up);
+					return up;
+				}
+				if(up == 1) {
+					System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
+					plateau[X][Y].setAppartenance(up);
+					System.out.println("un point pour l'équipe " + up);
+					return up;
+				}
+			}
+			if( arrive == 8) {
+				if(gauche == droite && droite == up) {
+					plateau[X][Y].setAppartenance(up);
+					System.out.println("un point pour l'équipe " + up);
+					return up;
+				}
+			}
+			
+			
+			
+		}
+		
+		System.out.println("X : " + X);
+		System.out.println("Y : " + Y);
+		System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
+		System.out.println("arrive : " + arrive +"\n\n");
+		return -789;
+	}
 	
 	
 	

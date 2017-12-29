@@ -16,7 +16,7 @@ public class Main {
 		int choix = 0;
 		int posX;
 		int posY;
-		
+		/*
 		while (nbPasse !=2) {
 			System.out.println("joueur " + NJoueur + " : " );
 			System.out.println("\tPour jouer : 1 \n\tPour passer : 2 ");
@@ -85,8 +85,25 @@ public class Main {
 			P.afficherP();
 			
 		}	
+		*/
+		P.PlacerPiece(1, 1, 1);	
+		P.PlacerPiece(1, 2, 1);	
+		P.PlacerPiece(1, 3, 1);	
+		P.PlacerPiece(2, 1, 1);	
+		P.PlacerPiece(3, 1, 1);	
+		P.PlacerPiece(4, 1, 1);	
+		P.PlacerPiece(3, 3, 1);	
+		P.PlacerPiece(2, 3, 1);	
+		P.PlacerPiece(4, 3, 1);	
+		P.PlacerPiece(4, 2, 1);	
+		
+		
+		P.afficherP();
 		System.out.println(allCh.size());
+		int wqaz = P.Calcul(1,1);
+		System.out.println("awxszedc = " + wqaz);
+		P.score();
 		
-		
+		System.out.println("appart : " + P.plateau[2][2].getAppartenance());
 	}
 }

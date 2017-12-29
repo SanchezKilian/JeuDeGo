@@ -3,12 +3,21 @@ public class Piece {
 	
 	private Position position;
 	private int couleur = -1; // true = b , false = w
+	private int appartenance = -999;
 	
 	public Piece(int X, int Y, int clr) { // clr = couleur, 0 = b , 1 = w , -1 = invisible;
 		position = new Position(X,Y);
 		couleur = clr;
 	}
 	
+	public int getAppartenance() {
+		return appartenance;
+	}
+
+	public void setAppartenance(int appartenance) {
+		this.appartenance = appartenance;
+	}
+
 	public Position GetPos() {
 		return position;
 	}
