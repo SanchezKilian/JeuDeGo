@@ -92,18 +92,40 @@ public class Main {
 		P.PlacerPiece(2, 1, 1);	
 		P.PlacerPiece(3, 1, 1);	
 		P.PlacerPiece(4, 1, 1);	
-		P.PlacerPiece(3, 3, 1);	
-		P.PlacerPiece(2, 3, 1);	
+		P.PlacerPiece(3, 4, 1);	
+		P.PlacerPiece(1, 4, 1);	
+		P.PlacerPiece(2, 4, 1);	
 		P.PlacerPiece(4, 3, 1);	
 		P.PlacerPiece(4, 2, 1);	
+		//P.PlacerPiece(2, 3, 1);
+		P.PlacerPiece(5, 6, 1);	
+		P.PlacerPiece(5, 4, 1);	
+		P.PlacerPiece(4, 5, 0);	
+		P.PlacerPiece(6, 5, 0);	
 		
+		P.PlacerPiece(7, 5, 0);	
+		P.PlacerPiece(8, 5, 0);	
+		P.PlacerPiece(9, 5, 0);	
+		P.PlacerPiece(10, 5, 0);	
+		P.PlacerPiece(11, 5, 0);	
+		P.PlacerPiece(12, 5, 0);	
+		P.PlacerPiece(13, 5, 0);	
+		P.PlacerPiece(14, 5, 0);	
+		
+		P.PlacerPiece(15, 5, 0);	
+		P.PlacerPiece(16, 5, 0);	
+		P.PlacerPiece(17, 5, 0);	
+		P.PlacerPiece(18, 5, 0);	
+		P.PlacerPiece(19, 5, 0);	
+		P.PlacerPiece(6, 6, 0);	
+		P.PlacerPiece(6, 7, 0);	
+		P.PlacerPiece(6, 8, 0);	
 		
 		P.afficherP();
 		System.out.println(allCh.size());
-		int wqaz = P.Calcul(1,1);
-		System.out.println("awxszedc = " + wqaz);
+				
 		P.score();
 		
-		System.out.println("appart : " + P.plateau[2][2].getAppartenance());
+		System.out.println("appart : " + P.plateau[3][2].getAppartenance());
 	}
 }
