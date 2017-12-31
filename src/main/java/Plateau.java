@@ -91,96 +91,23 @@ public class Plateau {
 			
 			}
 		
-		for (Piece P : CaseCheck) {
-			System.out.println("place libre : " + P.GetPos().getX() +"__" + P.GetPos().getY()  + " clr " + P.getClr()); 
-			
-			
-		}
 		
 		return CaseCheck.size();		
 		}
 	
 	
-	public int CalcScore() {  // i = pt pour les blancs  l = pt pour les noires.
-		boolean fin = false;
-		for(int a = 0; a < 20 ; a++) {
-			for (int b = 0; b <20; b++) {
-				if (plateau[a][b].getClr() == -1) {
-					while (!fin) {
-						
-					
-					}
-				}
-			}
-		}
-		return 0;
-	}
 	
-	public int Calcul(int X, int Y) {
-		int dessus =-15, dessous = -20,droite = -25 , gauche = -30;
-		if(X > 1 ) {
-			if (plateau[X-1][Y].getClr() != -1) {
-				return plateau[X-1][Y].getClr();
-			}else {
-				dessus = Calcul(X-1,Y);
-			}
-		}else {
-			return -9;
-		}
-		if(X != 19) {
-			if (plateau[X+1][Y].getClr() != -1) {
-				return plateau[X+1][Y].getClr();
-			}else {
-				dessous = Calcul(X+1,Y);
-			}
-		}else {
-			return -9;
-		}
-		if(Y != 1) {
-			if (plateau[X][Y-1].getClr() != -1) {
-				return plateau[X][Y-1].getClr();
-			}else {
-				gauche = Calcul(X,Y-1);
-			}
-		}else {
-			return -9;
-		}
-		if(Y != 19) {
-			if (plateau[X][Y+1].getClr() != -1) {
-				return plateau[X][Y+1].getClr();
-			}else {
-				droite = Calcul(X,Y+1);
-			}
-		}else {
-			return -9;
-		}
-		
-		if(dessus == dessous && gauche == droite && dessus == droite) {
-			if(dessus == 0) {
-				Pb ++;
-				System.out.println("pB++");
-			}
-			if(dessus == 1) {
-				Pn ++;
-				System.out.println("pN++");
-			}
-		}
-		
-		
-		return -10;
-		
-	}
 	
 	public void score() {
 		/*
 		for(int a = 1;a <20 ;a++) {
 			for(int b = 1 ; b<20;b++) {
 				Arround(plateau[a][b],0);
-				System.out.println("a"+a + "\n b"+b);
+				
 			}	
 		}
-		*/	
-		Arround(plateau[10][2],0);
+		*/
+		System.out.println("\nLe calcul du score est en cours d'implementation,\n Nous nous excusons pour la gêne occasionnée");
 	}
 		
 	private int Arround(Piece P, int arrive) {   // arrive : 4 gauche 8 haut 6 droite 2 bas 
@@ -283,20 +210,20 @@ public class Plateau {
 				if(up == 0) {
 					//System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe " + up);
+					
 					return up;
 				}
 				if(up == 1) {
 					//System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe " + up);
+					
 					return up;
 				}
 			}
 			if( arrive == 8) {
 				if((gauche == droite && droite == up)||(gauche == droite &&  up ==-10 && gauche == down)) {
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe8 " + up);
+					
 					return up;
 				}
 			}
@@ -304,7 +231,7 @@ public class Plateau {
 				
 				if((gauche == droite && droite == down)||(gauche == down &&  up==droite)) {
 					plateau[X][Y].setAppartenance(down);
-					System.out.println("un point pour l'équipe2 " + up +"aaa" + X +"zzz"+Y);
+					
 					return up;
 				}
 			}
@@ -312,34 +239,27 @@ public class Plateau {
 			if( arrive == 4) {
 				if((up == down  && gauche == up)||(up == down  && droite == -10 && up == droite)) {
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe 4" + up);
+					
 					return up;
 				}
 			}
 			if( arrive == 6) {
 				if((up == down && droite == up) || ( down == up && gauche == -10 && up == gauche)) {
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe 6" + up);
+					
 					return up;
 				}
 			}
 			if( arrive == 0) {
 				if((up == gauche && droite == down) || ( down == up && gauche == -10 && up == gauche)) {
 					plateau[X][Y].setAppartenance(up);
-					System.out.println("un point pour l'équipe 0" + up);
+					
 					return up;
 				}
 			}
 			
 			
 			
-			
-		
-		
-		System.out.println("X : " + X);
-		System.out.println("Y : " + Y);
-		System.out.println("haut : " + up + " bas : " + down + " gauche : " +gauche+" droite : " +droite);
-		System.out.println("arrive : " + arrive +"\n\n");
 		
 		return -789;
 	}

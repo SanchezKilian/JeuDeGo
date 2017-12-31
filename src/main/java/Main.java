@@ -17,8 +17,15 @@ public class Main {
 		int posX;
 		int posY;
 		
+		System.out.println("Bienvenue dans ce jeu de Go");
+		System.out.println("\nà chaque tour, le joueur peut choisir de jouer ou passer.");
+		System.out.println("pour jouer indiquer les coordonnées de l'intersection sur laquelle vous souhaitez placer votre pion,");
+		System.out.println("(de 1.1 à 19.19)");
+		System.out.println("\n \t Bonne Partie ! \n\n\n");
+		
+		
 		while (nbPasse !=2) {
-			System.out.println("joueur " + NJoueur + " : " );
+			System.out.println("\n\njoueur " + NJoueur + " : " );
 			System.out.println("\tPour jouer : 1 \n\tPour passer : 2 ");
 				choix = scan.nextInt();
 			
@@ -40,7 +47,7 @@ public class Main {
 						for (Chaines C : allCh) {
 							if(C.ChaineProche(Piec)) {
 								AConcate.add(C);
-								System.out.println("coucou /////////////////////////////////////////////" + C);
+								
 							}
 						}
 						if (AConcate.size()==1) {
@@ -52,47 +59,36 @@ public class Main {
 							AConcate.remove(0);
 							for (Chaines C : AConcate) {
 								finalle.AjouterC(C);
-								System.out.println("ajout à la chaine de concaténation");
+								
 								allCh.remove(C);
 							}
 							
 							allCh.add(finalle);	
-							System.out.println("AConcate : " + AConcate.size());
+							
 							
 						}
 						AConcate.clear();
-						
+						if(NJoueur == 0) {
+							NJoueur = 1;
+						}else {
+							NJoueur =0;
+						}
 						
 					}else {
 						System.out.println("emplacement non valide, veuillez selectionner un autre emplacement ou passer votre tour.");
-						break;
+						
 					}
-					
-					
-					
-					
-					
+							
 			}
-			if(NJoueur == 0) {
-				NJoueur = 1;
-			}else {
-				NJoueur =0;
-			}
-			for (Chaines C : allCh) {
-				System.out.println("\n chaine : nombre libertée : " + P.calcFree(C)  );
-				C.afficherChaine();
-			}
-			P.afficherP();
 			
-		}	
-		
+			P.afficherP();
+		}		
 	
 		
 		P.afficherP();
-		System.out.println(allCh.size());
-				
+		
 		P.score();
 		
-		System.out.println("appart : " + P.plateau[3][2].getAppartenance());
+		
 	}
 }
